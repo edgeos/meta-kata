@@ -1,0 +1,30 @@
+--- a/cmake/modules/BuildSPDK.cmake	2018-07-13 10:19:30.965223553 -0400
++++ b/cmake/modules/BuildSPDK.cmake	2018-07-13 10:22:40.445955236 -0400
+@@ -1,7 +1,9 @@
+ macro(build_spdk)
+-  if(NOT TARGET dpdk-ext)
+-    include(BuildDPDK)
+-    build_dpdk()
++find_package(dpdk)
++  set(HAVE_DPDK ${DPDK_FOUND})
++  set(DPDK_DIR ${DPDK_INCLUDE_DIR}/..)
++  if(NOT DPDK_FOUND)
++    message(FATAL_ERROR "dpdk not found")
+   endif()
+   find_package(CUnit REQUIRED)
+   if(LINUX)
+@@ -10,13 +12,12 @@
+   endif()
+   include(ExternalProject)
+   ExternalProject_Add(spdk-ext
+-    DEPENDS dpdk-ext
+     SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/spdk
+     CONFIGURE_COMMAND ./configure --with-dpdk=${DPDK_DIR}
+     # unset $CFLAGS, otherwise it will interfere with how SPDK sets
+     # its include directory.
+     # unset $LDFLAGS, otherwise SPDK will fail to mock some functions.
+-    BUILD_COMMAND env -i PATH=$ENV{PATH} CC=${CMAKE_C_COMPILER} $(MAKE) EXTRA_CFLAGS="-fPIC"
++    BUILD_COMMAND env -i PATH=${CMAKE_SYSROOT}:$ENV{PATH} CC=${CMAKE_C_COMPILER} $(MAKE) EXTRA_CFLAGS="-fPIC"
+     BUILD_IN_SOURCE 1
+     INSTALL_COMMAND "true")
+   ExternalProject_Get_Property(spdk-ext source_dir)

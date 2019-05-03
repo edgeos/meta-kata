@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2018-07-13 10:34:30.286210858 -0400
++++ b/CMakeLists.txt	2018-07-13 11:24:16.036361958 -0400
+@@ -235,8 +235,8 @@
+   if(NOT WITH_BLUESTORE)
+     message(SEND_ERROR "Please enable WITH_BLUESTORE for using SPDK")
+   endif()
+-  include(BuildSPDK)
+-  build_spdk()
++  find_package(dpdk REQUIRED)
++  find_package(spdk REQUIRED)
+   set(HAVE_SPDK TRUE)
+ endif(WITH_SPDK)
+ 

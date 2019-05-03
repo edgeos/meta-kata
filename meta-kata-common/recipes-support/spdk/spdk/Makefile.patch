@@ -1,0 +1,11 @@
+--- a/Makefile	2018-07-13 14:50:19.829023069 -0400
++++ b/Makefile	2018-07-13 15:24:13.307658937 -0400
+@@ -60,7 +60,7 @@
+ $(DIRS-y): mk/cc.mk config.h
+ 
+ mk/cc.mk:
+-	$(Q)scripts/detect_cc.sh --cc=$(CC) --cxx=$(CXX) --lto=$(CONFIG_LTO) > $@.tmp; \
++	$(Q)scripts/detect_cc.sh --cc="$(CC)" --cxx="$(CXX)" --lto="$(CONFIG_LTO)" > $@.tmp; \
+ 	cmp -s $@.tmp $@ || mv $@.tmp $@ ; \
+ 	rm -f $@.tmp
+ 

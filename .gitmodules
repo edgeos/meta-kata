@@ -1,0 +1,3 @@
+[submodule "meta-dpdk"]
+	path = meta-dpdk
+	url = https://git.yoctoproject.org/git/meta-dpdk

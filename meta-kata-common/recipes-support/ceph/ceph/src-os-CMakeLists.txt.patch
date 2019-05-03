@@ -1,0 +1,11 @@
+--- a/src/os/CMakeLists.txt	2018-07-16 15:40:07.577085393 -0400
++++ b/src/os/CMakeLists.txt	2018-07-16 22:04:59.716469868 -0400
+@@ -95,7 +95,7 @@
+ 
+ if(WITH_SPDK)
+   target_link_libraries(os
+-    ${SPDK_LIBRARIES})
++    ${SPDK_LIBRARIES};rt;${UUID_LIBRARIES})
+ endif()
+ 
+ if(WITH_LTTNG)

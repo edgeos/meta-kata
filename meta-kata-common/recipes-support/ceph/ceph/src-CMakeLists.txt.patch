@@ -1,0 +1,10 @@
+--- a/src/CMakeLists.txt	2018-07-12 11:52:35.887372451 -0400
++++ b/src/CMakeLists.txt	2018-07-20 11:30:09.410283011 -0400
+@@ -762,7 +762,6 @@
+   set(CEPH_BUILD_VIRTUALENV /tmp)
+ endif()
+ 
+-add_subdirectory(pybind)
+ add_subdirectory(ceph-disk)
+ add_subdirectory(ceph-volume)
+ add_subdirectory(ceph-detect-init)

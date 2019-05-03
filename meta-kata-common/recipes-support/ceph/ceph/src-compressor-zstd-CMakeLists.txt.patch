@@ -1,0 +1,10 @@
+--- a/src/compressor/zstd/CMakeLists.txt        2018-07-12 11:52:35.931372450 -0400
++++ b/src/compressor/zstd/CMakeLists.txt        2018-07-13 14:45:02.254658698 -0400
+@@ -10,6 +10,7 @@
+              -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}
+              -DCMAKE_C_FLAGS=${ZSTD_C_FLAGS}
+              -DCMAKE_AR=${CMAKE_AR}
++             -DCMAKE_SYSROOT=${CMAKE_SYSROOT}
+   BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/libzstd
+   BUILD_COMMAND $(MAKE) libzstd_static
+   INSTALL_COMMAND "true")

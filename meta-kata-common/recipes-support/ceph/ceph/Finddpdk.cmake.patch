@@ -1,0 +1,11 @@
+--- a/cmake/modules/Finddpdk.cmake	2018-07-11 14:21:13.503944082 -0400
++++ b/cmake/modules/Finddpdk.cmake	2018-07-19 11:34:20.826918578 -0400
+@@ -14,7 +14,7 @@
+   pci bus_pci cmdline eal ethdev hash kvargs mbuf
+   mempool mempool_ring mempool_stack
+   pmd_bond pmd_vmxnet3_uio pmd_ixgbe pmd_i40e pmd_ring pmd_af_packet
+-  ring)
++  ring bus_vdev)
+ 
+ foreach(c ${components})
+   find_library(DPDK_rte_${c}_LIBRARY rte_${c}
